@@ -161,7 +161,7 @@ public with sharing class cultivistAPI {
 
         
         System.HttpResponse response = cultivistAPICallout(reqUrl, 'PUT', strbody, strtoken); 
-        
+        //system.debug('res@@@###!!! ' + response);
         //system.debug('res@@@###!!! ' + response.getBody());
 
         Account objacc = new Account(Id = obj.Id, Cultivist_API_Exception__c='');  
