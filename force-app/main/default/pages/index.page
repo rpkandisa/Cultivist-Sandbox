@@ -1,0 +1,184 @@
+<apex:page id="Registration_step_first" showHeader="false" controller="RegistrationStepFirstController"  standardstylesheets="false" applyHtmlTag="true"  title="thecultivist | membership" docType="html-5.0" >
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    	<title>The Cultivist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <apex:stylesheet value="{!URLFOR($Resource.style2, 'style.css')}" />
+         <apex:stylesheet value="{!$Resource.MyCustumStyle}" />
+    	 <apex:includeScript value="{!$Resource.pd}"/>
+        <apex:includeScript value="{!$Resource.app}"/>
+
+	</head>
+    <script>
+        function ready() {
+            var el;
+            $('*[id*=field2]').each(function() {el=this;});
+            var option = document.createElement("option");
+            option.text = "Select country";
+            option.disabled = true;
+            el.add(option);
+      	}
+    document.addEventListener("DOMContentLoaded", ready);
+    </script>
+<apex:outputPanel title="body" >
+    <body class="application-form ">
+        <c:Header />
+<apex:outputPanel title="wraper">
+        <div id="wrapper">
+            <div id="inner-wrapper">
+                <c:applicationHeader />
+                <div class="application-form-container">
+                    <div class="application-form-header">
+                        <apex:outputPanel rendered="{!isMandarin}">
+                            <p>
+                               MEMBERSHIP 
+                            </p>
+                            <p style='content:"";display:block;margin:1em auto;width:34px;height:1px;background:black;'/>
+                            <p>
+                                <b> Welcome</b>
+                            </p>
+                            <p> 
+                               As a valued member of Fans of M.O. we invite you to purchase a Museum Membership from global arts club, The Cultivist. 
+                               The membership provides the cardholder and up to three guests with complimentary and ‘front of queue’ access to over 100 of the world’s best museums.
+                               No tickets, no bookings, no complications!
+                            </p>
+                            <p> 
+                               In order to get your Museum Membership underway, please fill out the following details. Our team will be in touch and your Museum Card will be mailed to you shortly thereafter, so that you can begin enjoying your membership.
+                            </p>
+                            
+                            <p> 
+    							To discover what a full membership to The Cultivist entails, please enquire   <a href="{!$Site.BaseUrl}/contact_us?mandarin=true"  >HERE</a>.
+                            </p>
+                            <p>
+                                MUSEUM CARD: £700 UK / €700 EUR / $800 US and Rest of World
+                            </p>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!!isMandarin}">
+                            <p>
+                                <b> Welcome.</b>
+                            </p>
+                            <p> 
+                                Your Cultivist Museum Membership is a only few steps away. All
+                                you need to do is fill in the details below. It should only take a few
+                                minutes.
+                            </p>
+                            <p>
+                                MUSEUM CARD: £700 UK / €700 EUR / $800 US and Rest of World
+                            </p>
+                        </apex:outputPanel>
+                    	
+                    </div>
+                    <apex:form acceptcharset="UTF-8" styleClass="new_about_you"  >
+                        <fieldset>
+                            <div class='row' style="word-wrap: break-word;">
+                              <apex:pageMessages id="error"   />  
+                            </div>
+                            <legend>
+                                <strong>
+                                    About You
+                                </strong>
+                            </legend>
+                            
+                            
+                            <ol class="application-fields">                   
+<!-- username title-->
+                                <div class="row">
+                                    <div class='half-width'>
+                                        <li class="li-title">
+                                            <label for="title">Your Title </label>
+                                            <apex:selectList value="{!title}"  size="1" styleClass="MyCustomSelect" style="height: 100%;" >
+                                            	<apex:selectOptions value="{!titleList}"  /> 
+                                            </apex:selectList>
+                                        </li>
+                                        <li class="li-name">
+                                        	<label for="first_name">Your First name</label>
+                                        	<apex:input id="first_name"  size="30" type="text" value="{!firstName}" required="true" />
+                                    	</li>
+                                    </div>
+                                    
+                                    <li class="half-width">                                      
+                                        <label for="Last_name">Your Last name</label>
+                                        <apex:input id="Last_name" size="30" type="text" value="{!lastName}" required="true" />	
+                                    </li>
+                                </div>                         
+<!-- email -->
+                                <div class="row">
+                                    
+                                    <li class="half-width">
+                                        <label for="email">Your email address </label>
+                                        <apex:input id="email"  size="30" type="email" value="{!email}" required="true" />
+                                    </li>
+                                
+                                <div class="half-width">
+                                    <li class="li-country-code">
+                                        <label for="countryCode">Country code	 </label>
+                                        <apex:input value="{!foneCountryCode}"  id="countryCode" size="30" html-maxlength="15" type="tel" required="true" />
+                                    </li>
+                                    <li class="li-telephone">
+                                        <label for="about_you_telephone" >Phone</label>
+                                        <apex:input value="{!fone}"  id="fone"  size="30" html-maxlength="25" type="tel" required="true" />
+                                    </li>
+                                </div>
+                                    </div>
+                            </ol>
+                         </fieldset>
+                            <div class="row">
+                                <legend>
+                                    <strong>Your primary address</strong>
+                                </legend>
+                            </div>
+                         <fieldset>       
+                             <ol class="application-fields">                                      
+                                 <div class="row">
+                                     <li class="half-width">
+                                         <label for="about_you_address_1">Address line 1</label>
+                                         <apex:input value="{!Street}" id="about_you_address_1" size="30" type="text" required="true" />
+                                     </li>
+                                     <li class="half-width">
+                                         <label for="about_you_address_2">Address line 2 <span class="optional">(Optional)</span></label>
+                                         <apex:input value="{!StreetSecond}" id="about_you_address_2" size="30" type="text" required="false" />
+                                     </li>
+                                 </div>
+                                 <div class="row">
+                                     <li class="half-width">
+                                         <label for="City">City</label>
+                                         <apex:input value="{!City}" id="City" size="30" type="text" required="true" />
+                                     </li>
+                                     <li class="half-width">
+                                         <label for="PostalCode">Zip/Postal Code	</label>
+                                         <apex:input value="{!PostalCode}" id="PostalCode" size="30"   type="text" required="true" />
+                                     </li>
+                                 </div>
+                             </ol>
+                           </fieldset>
+                           
+                    <div class="row">
+                    	<apex:actionRegion >
+                        	<ol class="application-fields">       
+                                <li class="half-width">
+                                    <label for="ShippingCity">Country</label>
+                                    <apex:selectList value="{!CountryCode}" multiselect="false"  styleClass="MyCustomSelect" size="1" id="Country"  >
+                                        <apex:selectOptions value="{!shippingCountryCodeList}" id="countrylist"/>
+                                    </apex:selectList>                               
+                                </li>
+                                <li class="half-width">
+                                    <label for="State"  >State/Province</label>
+                                    <apex:input value="{!StateCode}" id="field2" size="30"   type="text" required="false" />
+                                </li>
+                            </ol>
+                        </apex:actionRegion>
+      
+                    </div>
+                        <fieldset class="application-controls">
+                        <apex:commandButton action="{!action}" value="Next"  id="submit"  />
+                        </fieldset>
+                    </apex:form>
+                </div>
+            </div>
+        </div>
+</apex:outputPanel>   
+    </body>
+</apex:outputPanel>
+</html>
+</apex:page>

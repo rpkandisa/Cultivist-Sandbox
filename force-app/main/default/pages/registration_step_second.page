@@ -1,0 +1,273 @@
+<apex:page id="Registration_step_second" cache="true" showHeader="false" controller="RegistrationStepSecondController" action="{!doredirect}" standardstylesheets="false" applyHtmlTag="true"  title="thecultivist | membership" docType="html-5.0">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>The Cultivist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <apex:stylesheet value="{!URLFOR($Resource.style2, 'style.css')}" />
+        <apex:stylesheet value="{!$Resource.MyCustumStyle}" />
+        <apex:includeScript value="{!$Resource.pd}"/>
+        <apex:includeScript value="{!$Resource.app}"/>
+    </head> 
+<apex:outputPanel title="body" id="bodyPanel" >
+    <body class="application-form" id="body">
+    <script>
+    function ready() {
+        var el;
+        $('*[id*=submitButton]').each(function() {el=this;});
+        if(!{!terAndConditions}){
+        
+        el.disabled = true;}
+        var el;
+        if({!rend}){
+            document.getElementById('myDiv').style.display = "block";
+            document.getElementById('textDiv').style.display = "none";
+            
+        }else{
+        document.getElementById('myDiv').style.display = "none";}
+        document.getElementById('textDiv').style.display = "block";
+        
+        /* $('*[id*=thePanel]').each(function() {el=this;});
+        if({!rend}){
+        el.style.display = "block";
+        }else {el.style.display = "none";}*/
+    }
+        
+    function readyq() {
+        var el;
+        $('*[id*=terms_licens]').each(function() {el=this;});
+        el.checked = false;
+    } 
+    document.addEventListener("DOMContentLoaded", ready);
+    
+       
+        
+        function aceptLicense(cb){
+          var el;
+          $('*[id*=submitButton]').each(function() {el=this;});
+
+            if(document.getElementById('Registration_step_second:formId:terms_licens').checked && document.getElementById('Registration_step_second:formId:terms_agrimence').checked){
+            el.disabled = false;
+            }else{
+            el.disabled = true;
+            }
+          
+            
+        }
+        
+        function next(clicked_id) {
+            var value = document.getElementById(clicked_id).value;
+            var name = clicked_id;
+            if(value.length==4){
+                name = name+'1';
+                document.getElementById(clicked_id+'1').focus();
+            }
+        }
+        
+        function upladfoto(){
+          var buton = $('*[id*=postFileId]');
+          buton.click();
+        }
+    </script>
+        <c:Header />
+<apex:outputPanel title="wraper" id="panel">
+            <div id="wrapper">
+<apex:outputPanel title="inner-wrapper" id="inner-wrapper" >                
+                <div id="inner-wrapper_div" >
+                    <c:applicationHeader />
+<apex:outputPanel title="application-form-container" id="application-form-container" > 
+                        <div class="application-form-container" >
+                            <div class="application-form-header">
+                                
+                                    <ol class="application-fields">  
+                                
+                              
+                                 
+                                       <legend>
+                                                <strong>
+
+                                          YOUR PAYMENT DETAILS
+                                           </strong>
+                                  </legend>
+                                  
+                              
+                                    
+                                </ol>
+                                    
+                                
+                              <p>You will be charged an annual membership fee of {!currentIso}{!sum}{!currentIsoString}.
+                                    You will be given the option to cancel your membership at the end
+                                    of the term - which of course, we hope you won't want to do.
+                                  
+                              </p>
+                                    
+                            </div>
+                            <apex:outputPanel id="myForm">
+                                   <div class='row'>
+                                       <apex:pageMessages id="error"  />
+                                   </div>
+                                   </apex:outputPanel>
+                            <apex:form acceptcharset="UTF-8" styleClass="new_about_you" id="formId"   >
+                               <fieldset>
+                                   
+                                   <br/>
+                                    <ol class="application-fields">   
+                                        
+                                        <div class="row">
+                                            <legend>
+                                                <strong>
+                                                    CARD DETAILS
+                                                </strong>
+                                            </legend>
+                                            <div class="row">
+                                                <div class='half-width'>
+                                                    <li > 
+                                                        <label for="card_number1">The name on your card</label>
+                                                        
+                                                        <apex:input id="card_name"  size="30" type="text" value="{!cardName}" required="true" />
+                                                    </li> 
+                                                </div>
+                                                <div class='half-width'>
+                                                    <label for="card_number1">Your card number</label>
+                                                    <apex:input id="input1"  size="10" type="text" value="{!cardNumber}" required="true" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class='row'>
+                                             <div class='half-width'>
+                                             <label for="month">The expiry date</label>
+                                                <div class='half-width'>
+                                                   
+                                                    <apex:input id="input11111"  size="30" value="{!expiryMonth}" html-placeholder=" Month" type="text" html-maxlength="2" required="true" />
+                                                 </div>
+                                                  <div class='half-width'>
+                                               
+                                                    <apex:input id="years"  size="30" type="text" value="{!expiryYears}" html-placeholder=" Year " html-maxlength="4" html-minlength="4" required="true" />
+                                                 </div>
+                                            </div>
+                                             <div class='half-width'>
+                                            <label for="cvc">And finally, the CVC </label>
+                                                 <apex:input id="cvc"  size="30" type="text"  value="{!CVC}"  html-maxlength="4" html-minlength="3" required="true" />
+                                            </div>
+                                        </div>
+                                        <legend style='margin-top: 1.5em;margin-bottom: 0;' >
+                                            <fieldset class="application-controls">
+                                                <p>
+                                                    B I L L I N G &nbsp;  A D D R E S S 
+                                                </p>
+                                             <div id='textDiv'>
+                                                Use a different address from your primary address?
+                                                </div>
+                                            <p>
+                                               
+                                                
+                                            <apex:commandButton style="margin: 1em auto 1em;"  value="ADD NEW ADDRESS" onclick="var el = document.getElementById('myDiv');var text = document.getElementById('textDiv'); if(el.style.display=='none'){el.style.display='block';text.style.display='none';rendTrue();}else{el.style.display='none';text.style.display='block';rendFalse();}return false;" id="theCommandLink"/>
+                                                </p>
+                                               
+                                            </fieldset>
+                                        </legend>
+                                         </ol>
+                                </fieldset>  
+                                <div id="myDiv">
+                                    
+                                
+<apex:outputPanel id="thePanel"   >
+                                    <apex:outputPanel >
+                                    <fieldset>
+                                    <ol class="application-fields">  
+                                        <div class="row">
+                                            <li class="half-width">
+                                              <label for="about_you_address_1">Address line 1</label>
+                                              <apex:input value="{!Street}" id="about_you_address_1" size="30" type="text"  />
+                                            </li>
+                                            <li class="half-width">
+                                              <label for="about_you_address_2">Address line 2 <span class="optional">(Optional)</span></label>
+                                              <apex:input value="{!StreetSecond}" id="about_you_address_2" size="30" type="text"  />
+                                            </li>
+                                        </div>
+                                        <div class="row">
+                                            <li class="half-width">
+                                                <label for="City">City</label>
+                                                <apex:input value="{!City}" id="City" size="30" type="text"  />
+                                            </li>
+                                            <li class="half-width">
+                                                <label for="PostalCode">Zip/Postal Code </label>
+                                                <apex:input value="{!PostalCode}" id="PostalCode" size="30" type="text"  />
+                                            </li>
+                                        </div>
+                                        </ol> 
+                                         </fieldset> 
+                                       <div class="row">
+                                            <apex:actionRegion >
+                                                <ol class="application-fields">  
+                                                    <div class="form-group">
+                                                        <li class="half-width">
+                                                            <label for="ShippingCity">Country</label>
+                                                            <apex:selectList value="{!CountryCode}" multiselect="false" styleClass="MyCustomSelect" size="1"   id="Country">
+                                                                <apex:selectOptions value="{!shippingCountryCodeList}"/>
+                                                            </apex:selectList>
+                                                        </li>
+                                                       <li class="half-width">
+                                                            <label for="State"  >State/Province</label>
+                                                            <apex:input value="{!StateCode}" id="field2" size="30"   type="text" required="false" />
+                                                        </li>
+                                                    </div>
+                                                </ol>
+                                            </apex:actionRegion>
+                                    </div>   
+</apex:outputPanel>  
+</apex:outputPanel> 
+                                    </div>
+                                    <div class="row" >
+                                       <legend style='margin-top: 1.5em;margin-bottom: 1.5em;' >
+                                        <p>     
+                                          U P L O A D  &nbsp;&nbsp;Y O U R &nbsp;&nbsp;P H O T O
+                                        </p>
+                                        <p>
+                                          Please upload a high quality, passport style photo
+                                        </p> (approx. 1MB) to be printed on your membership card.
+                                       </legend>
+                                    </div>
+                                    <fieldset class="application-controls" id="fildsetId"> 
+                                        <apex:actionRegion id="regionId" >
+                                            <div class="row" >  
+                                            <apex:inputFile id="postFileId"  style="display: none;" accept="image/*;capture=camera"  fileName="{!fileName}"
+                                            styleclass="hidenElement"  fileSize="{!fileSize}"  value="{!fileBlob}"   contentType="fff"  />   
+                                                <apex:commandButton onclick="upladfoto();return false;"  value="UPLOAD YOUR PHOTO"  id="sdfea"/>                                              
+                                            </div>
+                                            <div class="row" id='termDiv'>
+                                                <apex:inputCheckbox style="margin-top: 1.5em;margin-bottom: 1.5em;" required="true" id="terms_licens" value="{!terAndConditions}" onchange="aceptLicense(this);" />
+                                                <label for="terms" style='display: inline-block;margin: 12px;'>Accept our <a target="_blank" href='https://thecultivist.com/legals/terms-of-use'>Terms and Conditions</a></label>
+                                                
+                                            </div>
+                                            <div class="row" id='acept'>
+                                                <apex:inputCheckbox style="margin-top: 1.5em;margin-bottom: 1.5em;" required="true" id="terms_agrimence" value="{!terAndConditions}" onchange="aceptLicense(this);" />
+                                                <label for="terms" style='display: inline-block;margin: 12px;'>Accept our <a target="_blank" href='https://thecultivist.com/legals/member-agreement/'>Member Agreement and Privacy Notice/Policy </a></label>
+                                                
+                                            </div>
+                                        </apex:actionRegion>
+                                        <apex:commandButton value="Purchase" action="{!CreatePaymentMethods}"  id="submitButton" />
+                                         
+                                    </fieldset>
+                            </apex:form>
+                            <apex:form >
+                                    <apex:actionFunction action="{!commandLinkActionTrue}" name="rendTrue"  reRender="none"  />
+                                    <apex:actionFunction action="{!commandLinkActionFalse}" name="rendFalse" reRender="none"  />
+                                
+                            </apex:form>
+
+                            
+                           
+                                </div>
+                            
+</apex:outputPanel>
+                </div>
+</apex:outputPanel>
+            </div>
+</apex:outputPanel>
+                            
+    </body>
+    </apex:outputPanel>
+    </html>
+</apex:page>

@@ -1,0 +1,44 @@
+<apex:page showHeader="false" sidebar="false" Controller="AssignCaseTOcamp_Controller">
+    <head>
+        <title>Update Cases</title>
+    </head>
+    <apex:form >
+        <apex:actionStatus id="status">
+    <apex:facet name="start">
+    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+        &nbsp;
+    </div>
+    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 20% 35%">
+        <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+            <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+            <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+        </div>
+    </div>
+    </apex:facet>
+</apex:actionStatus>
+        
+        <apex:actionFunction name="update" status="status" oncomplete="update2();" >
+            <apex:param name="para" assignTo="{!idSelectedCam}" value="" />
+        </apex:actionFunction>
+        <apex:actionFunction name="update2" status="status" action="{!updateCases}" oncomplete="alert('Records updated successfully');window.close();" />
+        
+        <apex:pageBlock title="Select Capaign" mode="edit">
+            <apex:pageMessages />
+            <apex:inputText html-placeholder="Campaign Name" style="margin-left: 2%;" value="{!strsearchString}" />
+                <apex:commandButton action="{!SearchCamp}" value="Go" />
+                <br/>
+            <apex:pageBlockSection >
+                
+ 				<apex:pageBlockTable value="{!lstCamp}" var="data">
+                    <apex:column headerValue="Campaign Name"><a onclick="update('{!data.ID}');" style="cursor:pointer; text-decoration: underline;">{!data.name}</a></apex:column>
+                    <apex:column headerValue="Parent Campaign" value="{!data.Parent.name}" />
+                    <apex:column headerValue="Status" value="{!data.Status}" />
+                    <apex:column headerValue="Type" value="{!data.Type}" />
+                    <apex:column headerValue="Start Date" value="{!data.StartDate}" />
+                    <apex:column headerValue="End Date" value="{!data.EndDate}" />
+                    <apex:column headerValue="Owner" value="{!data.Owner.Name}" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    </apex:page>

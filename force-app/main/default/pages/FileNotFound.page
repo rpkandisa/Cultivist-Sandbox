@@ -1,0 +1,45 @@
+<apex:page id="ErrorPage" showHeader="false" controller="ErorPageController"  standardstylesheets="false" applyHtmlTag="true"  title="Error" docType="html-5.0">
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    	<title>The Cultivist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   		 <apex:stylesheet value="{!URLFOR($Resource.style2, 'style.css')}" />
+    	 <apex:includeScript value="{!$Resource.pd}"/>
+        <apex:includeScript value="{!$Resource.app}"/>
+	</head>
+<apex:outputPanel title="body" >
+        <body class="application-form ">
+            <c:Header />
+<apex:outputPanel title="wraper">
+            <div id="wrapper">
+<apex:outputPanel title="inner-wrapper">                
+                  	<div id="inner-wrapper">
+                        <c:applicationHeader />
+                        
+<apex:outputPanel title="application-form-container"> 
+                        <div class="application-form-container">
+                        
+                           <div class="application-form-header">
+                              This page does not exist. Please check URL.
+                               <fieldset class="application-controls">
+                               <apex:form >
+                            	<apex:commandButton action="{!redirectMainPage}" value="Back to main page" />
+                            </apex:form>
+                               </fieldset>
+                           </div>
+                          
+                            
+                        </div>
+</apex:outputPanel>
+              
+                </div>
+</apex:outputPanel>
+            </div>
+</apex:outputPanel>
+            
+        
+        </body>
+	</apex:outputPanel>
+    </html>
+</apex:page>

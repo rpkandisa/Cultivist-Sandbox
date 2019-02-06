@@ -1,0 +1,61 @@
+<apex:page id="contact_us" showHeader="false" controller="TermOfUSEController" standardstylesheets="false"  applyHtmlTag="true"  title="Term of use"  docType="html-5.0" applyBodyTag="true">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>The Cultivist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+         <apex:stylesheet value="{!URLFOR($Resource.style2, 'style.css')}" />
+         <apex:includeScript value="{!$Resource.pd}"/>
+        <apex:includeScript value="{!$Resource.app}"/>
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"/>
+    </head>
+<apex:outputPanel title="body" >
+    <body class="application-form ">
+        <c:Header />
+    <apex:outputPanel title="wraper">
+        <div id="wrapper">
+            <div id="inner-wrapper">
+                <c:applicationHeader />
+                <div class="application-form-container">
+                    
+                    <apex:form acceptcharset="UTF-8" styleClass="new_about_you"  >
+                        
+                                <fieldset>
+                                        <legend>
+                                            <strong>
+                                         contact us form
+                                            </strong>
+                                        </legend>
+                                   
+                                        <ol class="application-fields">                   
+                                            <div class="row">
+                                                <li class="half-width">
+                                                    <label for="first_name">Name</label>
+                                                    <apex:input id="name" type="text" size="30"  value="{!name}" required="true" />
+                                                </li>
+                                                <li class="half-width">                                      
+                                                    <label for="Last_name">Email Address</label>
+                                                    <apex:input id="mail" type="email" size="30" value="{!mail}"  required="true" />
+                                                </li>
+                                            </div>                         
+                                          <div class="row">
+                                            <li >
+                                                <label for="title">Comment</label>
+                                                 <apex:inputTextarea id="msg"  rows="5" value="{!messangeUser}" required="true" />
+                                            </li>
+                                          </div> 
+                                        </ol>
+                                      </fieldset>
+                                    <fieldset class="application-controls">
+                                        <apex:commandButton action="{!sendMsg}" value="SEND"  />
+                                        <apex:pageMessages id="error"   />
+                                    </fieldset>     
+                    </apex:form>
+                </div>
+            </div>
+        </div>
+    </apex:outputPanel> 
+    </body>        
+</apex:outputPanel>
+</html>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardController="case" recordSetVar="cases" tabStyle="case" extensions="ChangeRecordType_Controller">
+    <apex:form >
+        <apex:pageBlock title="Change Record Type" mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Save" action="{!updateCases}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+        <apex:selectList id="chooseColor" value="{!strRecordtypeID}" size="1">
+            <apex:selectOptions Value="{!Items}"/>
+        </apex:selectList> 
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    </apex:page>

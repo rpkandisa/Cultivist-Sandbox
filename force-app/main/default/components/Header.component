@@ -1,0 +1,11 @@
+<apex:component Controller="AplicationHeaderController" >
+    <style type="text/css">
+            body { 
+            background-image: url({!$Resource.background2});
+            }	
+    </style>
+   
+    <a href="{!$Site.BaseUrl}{!mandarinText}" class="back-link"><img alt="Logo-light@2x" class="light-logo"   src='{!$Resource.logo}' width='30%' /></a>
+    <a href="{!$Site.BaseUrl}/term_of_use{!mandarinText}" class=" back-link-term"  >Legal</a>
+    <a href="{!$Site.BaseUrl}/contact_us{!mandarinText}" class=" back-link-contact"  >Contact us</a>
+</apex:component>

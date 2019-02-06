@@ -1,0 +1,62 @@
+<apex:page id="Caution" showHeader="false" controller="CautionController"  standardstylesheets="false" applyHtmlTag="true"  title="Caution" docType="html-5.0">
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    	<title>The Cultivist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   		<apex:stylesheet value="{!URLFOR($Resource.style2, 'style.css')}" />
+    	 <apex:includeScript value="{!$Resource.pd}"/>
+        <apex:includeScript value="{!$Resource.app}"/>
+	</head>
+    <style type="text/css">
+body { 
+        background-image: url({!$Resource.background2});
+        }	
+	</style>
+<apex:outputPanel title="body" >
+        <body class="application-form ">
+            <c:Header />
+<apex:outputPanel title="wraper">
+            <div id="wrapper">
+<apex:outputPanel title="inner-wrapper">                
+                  	<div id="inner-wrapper">
+                        <c:applicationHeader />
+                        
+<apex:outputPanel title="application-form-container"> 
+                        <div class="application-form-container">
+                        
+                           <div class="application-form-header">
+                               You have already made a successful payment  <br/>
+                               <apex:repeat value="{!listTransaction}" var="tr">
+                               		<div class = "row text-left"> 
+                                      Email: {!tr.bt_stripe__Payment_Method_Billing_Email__c};
+                                      Payment: {!tr.bt_stripe__Currency_ISO__c}
+                                      {!tr.bt_stripe__Amount__c};<br/>
+                                      Date: {!tr.bt_stripe__Processed_Date__c};
+                                   </div>	
+                                   <br/>
+                               </apex:repeat>
+                               
+                               If you would like to continue, please click Purchase
+                               
+                               <fieldset class="application-controls">
+                                   <apex:form >
+                                     <apex:commandButton value="Purchase" action="{!action}"  id="submitButton"/>
+                                   </apex:form>
+                               </fieldset>
+                           </div>
+                          
+                            
+                        </div>
+</apex:outputPanel>
+              
+                </div>
+</apex:outputPanel>
+            </div>
+</apex:outputPanel>
+            
+        
+        </body>
+	</apex:outputPanel>
+    </html>
+</apex:page>

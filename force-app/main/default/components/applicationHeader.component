@@ -1,0 +1,24 @@
+<apex:component controller="AplicationHeaderController" >
+    
+    	<apex:outputPanel rendered="{!!isMandarin}">
+     <header class="application-header" >
+                <h1>
+                    <a href="{!$Site.BaseUrl}">
+                        <img alt="Logo-light@2x" class="light-logo" height="22"  src='{!$Resource.logo}' width="376"/>
+                        <img alt="Logo-dark@2x" class="dark-logo" height="22"  src='{!$Resource.logo_dark}' width="376"/>
+                    </a>  
+                </h1>
+                <p>MUSEUM MEMBERSHIP</p>
+            </header>
+        </apex:outputPanel>
+    <apex:outputPanel rendered="{!isMandarin}">
+     <header class="application-header" style='margin: 0 auto 12px;padding-top: 0px; ' >
+                <h1>
+                    <a href="{!$Site.BaseUrl}/{!mandarinText}">
+                        <img alt="Logo-light@2x" class="light-logo" width="17%%"   src='{!$Resource.LogoMandarin}' />
+                        <img alt="Logo-dark@2x" class="dark-logo" width="25%"  src='{!$Resource.LogoMandarinDark}' />
+                    </a>  
+                </h1>
+            </header>
+        </apex:outputPanel>
+</apex:component>

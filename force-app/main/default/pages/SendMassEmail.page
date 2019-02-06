@@ -1,0 +1,40 @@
+<apex:page standardController="Account" standardStylesheets="false" recordSetVar="Accounts" tabStyle="Account" extensions="SendEmail_Controller">
+    <head>
+    <style>
+    .dataCol{
+    text-align:justify !IMportant;
+    }
+    </style>
+    </head>
+    <apex:form >
+    <apex:actionStatus id="status">
+    <apex:facet name="start">
+    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+        &nbsp;
+    </div>
+    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+        <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+            <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+            <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+        </div>
+    </div>
+    </apex:facet>
+</apex:actionStatus>
+    <apex:actionFunction name="refreshtext" status="status" reRender="templateBody" />
+        <apex:pageBlock title="Send Mass Email" mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Send" action="{!SendEmail}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Select Template" >
+        <apex:selectList id="chooseColor" onchange="refreshtext();" value="{!strTemplateID}" size="1">
+            <apex:selectOptions Value="{!Items}"/>
+        </apex:selectList> 
+            </apex:pageBlockSection>
+            <apex:pageblockSection title="Email Body" >
+                <apex:outputText id="templateBody" value="{!mapTemplatBody[strTemplateID]}" escape="false" ></apex:outputText>
+            </apex:pageblockSection>
+        </apex:pageBlock>
+    </apex:form>
+    </apex:page>

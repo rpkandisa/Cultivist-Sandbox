@@ -1,0 +1,75 @@
+<apex:page id="Term_of_use" showHeader="false" standardStylesheets="false" controller="TermOfUSEController" extensions="AplicationHeaderController" standardstylesheets="false"  applyHtmlTag="true"  title="Term of use"  docType="html-5.0" applyBodyTag="true">
+    <html class="legals-layout public-page dark-theme gr__thecultivist_com">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>The Cultivist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <apex:stylesheet value="{!URLFOR($Resource.StyleTermZip, 'style.css')}" />
+        <apex:includeScript value="{!$Resource.pd}"/>
+        <apex:includeScript value="{!$Resource.app}"/>
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"/>
+
+    </head>
+<body>  
+
+    <nav class="navigation">
+        <div class="navigation__container" >
+            
+			
+                <a href="{!$Site.BaseUrl}{!mandarinText}" class="navigation__logo" >The Cultivist</a>
+            
+                <a href="{!$Site.BaseUrl}/term_of_use{!mandarinText}"  class="account-button">Legal</a>
+            
+               <a href="{!$Site.BaseUrl}/contact_us{!mandarinText}"  class="apply-button">Contact us</a>           
+        </div>
+        
+        
+    </nav>
+  <section id="main" role="main">
+    <div class="slice spacer-slice" style="height: 120px"></div>
+    <div class="background-slice">
+        <div class="background-slice__slideshow"> 
+            <div class="background-slice__slide">
+                <img alt="Background_paint_1" class="background-slice__image"  src=" {!$Resource.background2}" />
+                <div class="background-slice__overlay" style="background-color: ; opacity: "></div>
+                <div class="background-slice__credit">
+                </div>
+            </div>
+        </div>
+    </div>
+<apex:form >
+<apex:outputPanel title="body" id="mainPanel"> 
+    <div class="legals-wrapper">
+      
+      <div class="legals-inner">
+         <div class="slice text-slice">
+             <div class="text">
+                <div class='row'>
+                    <h4>
+                    <apex:repeat var="ter" value="{!termList}"  >
+                        <apex:commandLink action="{!changeTerm}"  reRender="mainPanel" value="{!ter.Name__c}">
+                            <apex:param value="{!ter.id}" name="qqq" id="qqq" assignTo="{!termID}" />
+                        </apex:commandLink><span style="margin-left: 2%; margin-right: 2%;">
+					
+                        <apex:outputPanel rendered="{!ter.Name__c!='PRIVACY POLICIES'}">|</apex:outputPanel> 
+                        </span>
+                    </apex:repeat> 
+                    </h4>
+                    
+                </div > 
+                    <apex:outputText escape="false"  id="htmlText"   value="{!term.Information__c}" /> 
+                
+            </div>
+        
+        </div>
+     </div>
+</div>
+</apex:outputPanel>           
+</apex:form>
+</section>
+
+    </body>
+    
+    
+    </html>
+</apex:page>

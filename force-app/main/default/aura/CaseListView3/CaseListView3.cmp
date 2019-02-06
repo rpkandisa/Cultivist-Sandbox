@@ -1,0 +1,72 @@
+<aura:component controller="CaseListView3Ctrl" access="global" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
+    <!-- Current Account Id -->
+    <aura:attribute name="recordId" type="Id" />
+    
+    <!-- ======================================= Initialization Handler ==================================== -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    
+    <!-- Case related attributes -->
+    <aura:attribute name="BindedRelatedCases" type="List" />
+    <aura:attribute name="NoOpenCases" type="Boolean" default="false"/>
+    
+    <!-- ===================================== UI/Case Display ==================================== --> 
+    <thead>
+        <tr class="slds-text-title_caps">
+            <th scope="col" style="background: white;" width="25%">
+                <div class="slds-truncate" title="Membership Administration" style="font-size: 1.2em; font-weight: bold;margin-left: 24px;">Membership Administration</div>
+            </th>
+            <th scope="col" style="background: white;" width="25%">
+            </th>
+            <th scope="col" style="background: white;" width="25%">
+            </th>
+            <th scope="col" style="background: white;" width="25%">
+            </th>
+        </tr>
+    </thead>
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer" style="border-radius: 4px !important; margin-bottom: 3em;">
+      <thead>
+        <tr class="slds-text-title_caps">
+          <th scope="col" width="25%">
+            <div class="slds-truncate" title="Case Number">Case Number</div>
+          </th>
+          <th scope="col" width="25%">
+            <div class="slds-truncate" title="Status">Status</div>
+          </th>
+          <th scope="col" width="25%">
+            <div class="slds-truncate" title="Record Type">Record Type</div>
+          </th>
+          <th scope="col" width="25%">
+            <div class="slds-truncate" title="Date Opened">Date Opened</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+          
+          <aura:if isTrue="{!v.NoOpenCases}">
+          	<tr>
+              <td>No Open Cases</td>
+              <td></td>
+              <td></td>
+              <td></td>
+			</tr>                  
+          </aura:if> 
+        <aura:iteration items="{!v.BindedRelatedCases}" var="Case">
+        <tr>
+          <td data-label="Case Number" width="25%">
+            <div class="slds-truncate" title="{!Case.relatedCase.CaseNumber}"><a onclick="{!c.navigateToCase}" id="{!Case.relatedCase.Id}">{!Case.relatedCase.CaseNumber}</a></div>
+          </td>
+          <td data-label="Status" width="25%">
+            <div class="slds-truncate" title="{!Case.relatedCase.Status}">{!Case.relatedCase.Status}</div>
+          </td>
+          <td data-label="Record Type" width="25%">
+            <div class="slds-truncate" title="{!Case.caseRecordType.Name}">{!Case.caseRecordType.Name}</div>
+          </td>
+          <td data-label="Date Opened" width="25%">
+            <div class="slds-truncate" title="{!Case.relatedCase.CreatedDate}"><ui:outputDateTime value="{!Case.relatedCase.CreatedDate}"/></div>
+          </td>
+        </tr>
+        </aura:iteration>
+      </tbody>
+    </table>
+
+</aura:component>

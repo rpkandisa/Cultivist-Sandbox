@@ -1,0 +1,60 @@
+<apex:page id="finish" showHeader="false" controller="FinishController" standardstylesheets="false" action="{!doredirect}" applyHtmlTag="true"  title="thecultivist | membership" docType="html-5.0">       
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>The Cultivist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+         <apex:stylesheet value="{!URLFOR($Resource.style2, 'style.css')}" />
+         <apex:includeScript value="{!$Resource.pd}"/>
+        <apex:includeScript value="{!$Resource.app}"/>
+    </head>
+        
+<apex:outputPanel title="body" id="renderedPanel1" >
+        <body class="application-form ">
+            
+            <c:Header />
+<apex:outputPanel title="wraper">
+            <div id="wrapper">
+<apex:outputPanel title="inner-wrapper" id="renderedPanel">                
+                    <div id="inner-wrapper">
+                        <c:applicationHeader />
+<apex:outputPanel title="application-form-container" rendered="{!!isValid}" >
+<header class="application-header">
+       <apex:image value="{!$Resource.ajaxLoader}" width="20%" />
+    </header>
+     
+    <apex:form >
+        
+        <apex:actionFunction action="{!action}" name="cheack"  reRender="renderedPanel1"  />
+    </apex:form>
+    
+    <apex:outputText value="{!script}" escape="false" /> 
+</apex:outputPanel>
+                        
+<apex:outputPanel title="application-form-container" rendered="{!isValid}"  > 
+                        <div class="application-form-container">
+                            <apex:form acceptcharset="UTF-8" styleClass="new_about_you" style="margin-bottom: 40px;"  >
+                                <fieldset class="application-controls">
+                                    <div  style='font: 16px/1.5 "Futura",sans-serif;'  >
+                                        Thank you. Your membership card is in production and you will receive an email when it’s been
+                                        shipped. This usually takes about two weeks.
+                                    </div>               
+                                 </fieldset>
+                             </apex:form>
+                        </div>
+</apex:outputPanel>
+              
+                </div>
+</apex:outputPanel>
+            </div>
+</apex:outputPanel>
+          <script>
+window.location.hash="no-back-button";
+window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
+</script> 
+            </body>
+    </apex:outputPanel>
+
+    </html>
+</apex:page>

@@ -1,0 +1,11 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://thecultivist--kandisa.cs21.my.salesforce.com",
+  "sourceApiVersion": "44.0"
+}

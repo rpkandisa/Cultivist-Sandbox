@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2019-02-06T17:45:34+05:30" hostname="https://thecultivist--Kandisa.cs21.my.salesforce.com" tests="1" failures="0"  errors="0"  time="9.07">
+        <properties>
+            <property name="outcome" value="Passed"/>
+            <property name="testsRan" value="1"/>
+            <property name="passing" value="1"/>
+            <property name="failing" value="0"/>
+            <property name="skipped" value="0"/>
+            <property name="passRate" value="100%"/>
+            <property name="failRate" value="0%"/>
+            <property name="testStartTime" value="Feb 6, 2019 5:45 PM"/>
+            <property name="testExecutionTime" value="9.07 s"/>
+            <property name="testTotalTime" value="9.07 s"/>
+            <property name="commandTime" value="98.58 s"/>
+            <property name="hostname" value="https://thecultivist--Kandisa.cs21.my.salesforce.com"/>
+            <property name="orgId" value="00Dq0000000DMBwEAO"/>
+            <property name="username" value="rahul.g@kandisatech.com.kandisa"/>
+            <property name="testRunId" value="707q000001jqsyS"/>
+            <property name="userId" value="005q0000004fx0dAAA"/>
+        </properties>
+        <testcase name="fnApiCalloutValidate" classname="cultivistAPITest" time="9.07">
+        </testcase>
+    </testsuite>
+</testsuites>
